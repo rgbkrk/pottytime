@@ -3,7 +3,7 @@ Potty Time
 
 IP, UDP, TCP?
 
-Monitor bandwidth on an interface with some Go code, breaking it down by IP blocks.
+Monitor bandwidth on an interface with some Go code. This version has a default BPF to ignore Rackspace's ServiceNet.
 
 ```
 docker run -it rgbkrk/pottytime 
