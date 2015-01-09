@@ -26,7 +26,8 @@ func main() {
 
 	// Filter out IPs of ServiceNet
 	// According to http://www.rackspace.com/knowledge_center/article/updating-servicenet-routes-on-cloud-servers-created-before-june-3-2013
-	err = handle.SetBPFFilter("not net 10.176.0.0/12 and not net 10.208.0.0/12")
+	// Only monitoring IPv4
+	err = handle.SetBPFFilter("ip and not net 10.176.0.0/12 and not net 10.208.0.0/12")
 
 	if err != nil {
 		panic(err)
@@ -50,7 +51,6 @@ func main() {
 	packetSource := gopacket.NewPacketSource(handle, handle.LinkType())
 	for packet := range packetSource.Packets() {
 		metadata := packet.Metadata()
-		//log.Println(metadata.Length)
 		bytesum += metadata.Length
 	}
 }
