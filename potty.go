@@ -43,14 +43,14 @@ func main() {
 	go func() {
 		<-c
 		os.Stdout.Sync()
-		log.Printf("Bytes: %v\n", bytesum)
+		log.Printf("Total: %v Bytes\n", bytesum)
 		os.Exit(1)
 	}()
 
 	packetSource := gopacket.NewPacketSource(handle, handle.LinkType())
 	for packet := range packetSource.Packets() {
 		metadata := packet.Metadata()
-		log.Println(metadata.Length)
+		//log.Println(metadata.Length)
 		bytesum += metadata.Length
 	}
 }
