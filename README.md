@@ -1,7 +1,7 @@
 Potty Time
 ==========
 
-IP, UDP, TCP?
+How much IP?
 
 Monitor bandwidth on an interface with some Go code. This version has a default BPF to ignore Rackspace's ServiceNet.
 
